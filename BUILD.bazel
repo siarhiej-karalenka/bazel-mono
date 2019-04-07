@@ -1,0 +1,13 @@
+package(default_visibility = [ "//visibility:public" ])
+load("@io_bazel_rules_dotnet//dotnet:defs.bzl", "dotnet_library", "dotnet_binary", "dotnet_import_library")
+
+dotnet_library(
+  name = "greeter",
+  srcs = ["libs/greeter.cs"],
+)
+
+dotnet_binary(
+  name = "hello",
+  srcs = ["src/hello.cs"],
+  deps = [":greeter"]
+)
